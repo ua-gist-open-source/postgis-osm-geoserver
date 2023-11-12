@@ -12,21 +12,19 @@ services:
         target: /var/lib/postgresql/data
       
   geoserver:
-    image: "kartoza/geoserver:2.18.0"
+    image: docker.osgeo.org/geoserver:2.24.x
     ports:
       - "8080:8080"
     volumes:
       - type: volume
-        source: geoserver_data_volume
-        target: /opt/geoserver/data_dir
+        source: geoserver_data_volume 
+        target: /opt/geoserver_data
     environment:
-      - GEOSERVER_ADMIN_USER=admin
-      - GEOSERVER_ADMIN_PASSWORD=geoserver
-      - HTTP_PROXY_NAME=${CODESPACE_NAME}-8080.app.github.dev
-      - HTTP_PROXY_PORT=443
-      - HTTP_SCHEME=https
-      - MAXIMUM_MEMORY=756M
-      - INITIAL_MEMORY=128M
+      - ROOT_WEBAPP_REDIRECT=true
+      - CORS_ENABLED=true
+      - CORS_ALLOWED_ORIGINS=${CODESPACE_NAME}-8080.app.github.dev
+      - CORS_ALLOW_CREDENTIALS=true
+      - PROXY_BASE_URL=https://zany-succotash-694957g644crxr-8080.app.github.dev/geoserver
     deploy:
       resources:
         limits:
