@@ -16,7 +16,9 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - /workspaces/geoserver-intro/geoserver_data/data_dir:/opt/geoserver/data_dir
+      - type: volume
+        source: geoserver_data_volume
+        target: /opt/geoserver/data_dir
     environment:
       - GEOSERVER_ADMIN_USER=admin
       - GEOSERVER_ADMIN_PASSWORD=geoserver
@@ -36,6 +38,7 @@ services:
 
 volumes:
   postgresql_data_volume:
+  geoserver_data_volume:
   
 networks:
   default:
