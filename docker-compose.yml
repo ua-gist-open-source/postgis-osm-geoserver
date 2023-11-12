@@ -20,9 +20,6 @@ services:
         source: geoserver_data_volume 
         # target: /opt/geoserver/data_dir
         target: /opt/geoserver_data
-      # - type: bind
-      #   source: ./settings/web.xml
-      #   target: /usr/local/tomcat/webapps/geoserver/WEB-INF/web.xml
     environment:
       - ROOT_WEBAPP_REDIRECT=true
       - CORS_ENABLED=true
