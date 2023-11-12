@@ -8,8 +8,8 @@ services:
       - "5432:5432"
     volumes:
       - type: volume
-        source: geoserver_data_volume
-        target: /opt/geoserver/data_dir
+        source: postgresql_data_volume
+        target: /var/lib/postgresql/data
       
   geoserver:
     image: "kartoza/geoserver"
@@ -35,7 +35,7 @@ services:
           memory: 1G
 
 volumes:
-  geoserver_data_volume:
+  postgresql_data_volume:
   
 networks:
   default:
