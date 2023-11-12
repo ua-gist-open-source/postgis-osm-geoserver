@@ -18,13 +18,17 @@ services:
     volumes:
       - type: volume
         source: geoserver_data_volume 
+        # target: /opt/geoserver/data_dir
         target: /opt/geoserver_data
+      # - type: bind
+      #   source: ./settings/web.xml
+      #   target: /usr/local/tomcat/webapps/geoserver/WEB-INF/web.xml
     environment:
       - ROOT_WEBAPP_REDIRECT=true
       - CORS_ENABLED=true
       - CORS_ALLOWED_ORIGINS=${CODESPACE_NAME}-8080.app.github.dev
       - CORS_ALLOW_CREDENTIALS=true
-      - PROXY_BASE_URL=https://zany-succotash-694957g644crxr-8080.app.github.dev/geoserver
+      - PROXY_BASE_URL=https://${CODESPACE_NAME}-8080.app.github.dev/geoserver
     deploy:
       resources:
         limits:
