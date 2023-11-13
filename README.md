@@ -14,7 +14,7 @@ Create a github branch named `assignment` with the following files, submitting a
 - `landuse.sld`
 - `roads.sld`
 - `pois.sld`
-- `geoserver_layer_group_preview.png` - OpenLayers preview of `osm` Layer Group, zoomed into Tucson 
+- `geoserver_layer_group_preview.png` - OpenLayers preview of `osm` Layer Group, zoomed into the island of Kauai
 - `qgis_layer_group_preview.png` - QGIS view of `osm` Layer Group
 
 ### Prep your codespace
