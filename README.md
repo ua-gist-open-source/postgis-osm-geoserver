@@ -20,8 +20,8 @@ Create a github branch named `assignment` with the following files, submitting a
 ### Check the initialization setup
 The initialization step for this codespace includes some scripting to pre-populate some things that you did in previous classes.
 
-First check that the `docker.osgeo.org/geoserver` and `mdillon/postgis` containers are running. 
-[!check-docker](./media/check-docker.png)
+First check that the `docker.osgeo.org/geoserver` and `mdillon/postgis` containers are running. The `aaryno/populate-docker-geo` will probably not be running, which is ok.
+![check-docker](./media/check-docker.png)
 
 _If this is not running, you can re-run the containers with `docker compose -d` from your terminal`
 
@@ -31,7 +31,7 @@ psql -d hawaii -c "select count(*) from roads"
 ```
 You should get a row count of tens or hundreds of thousands of rows. On November 12, 2023 it was 76380:
 
-[!select_count_roads](./media/select_count_roads.png)
+![select_count_roads](./media/select_count_roads.png)
 
 _If the database does not exist or the row count is 0, run the populate script manually with: `docker run  --network gist604b -e STATE=hawaii -e DATABASE=hawaii aaryno/populate-docker-geo populate-postgis.sh`_
 
