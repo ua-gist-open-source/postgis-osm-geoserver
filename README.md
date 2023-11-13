@@ -21,9 +21,10 @@ Create a github branch named `assignment` with the following files, submitting a
 The initialization step for this codespace includes some scripting to pre-populate some things that you did in previous classes.
 
 First check that the `docker.osgeo.org/geoserver` and `mdillon/postgis` containers are running. The `aaryno/populate-docker-geo` will probably not be running, which is ok.
+
 ![check-docker](./media/check-docker.png)
 
-_If this is not running, you can re-run the containers with `docker compose -d` from your terminal`
+_If this is not running, you can re-run the containers with `docker compose up -d` from your terminal_
 
 Next, check the OSM data in postgis. I wrote a [script](https://github.com/ua-gist-open-source/docker-compose-populate) that will setup the OSM database, download the OSM hawaii data from geofabrik.de, and load the data into PostGIS.  In a Terminal Window, enter:
 ```
@@ -151,7 +152,7 @@ lines and points _below_ the polygon layers.
 Be sure to `Generate Bounds` and then `Save` the Layer Group like you did for the Layers.
 
 #### Deliverable: Geoserver Screenshot
-Visit the Layer Groups list in geoserver and look at the Open Layers preview. Zoom into Tucson and take a screen capture 
+Visit the Layer Groups list in geoserver and look at the Open Layers preview. Zoom into a populated area and take a screen capture 
 of your browser. Name it `geoserver_layer_group_preview.png`
 
 ### Load the Geoserver Layer Group from QGIS
