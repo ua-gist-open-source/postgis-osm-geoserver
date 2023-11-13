@@ -30,6 +30,7 @@ services:
       - GEOSERVER_CSRF_WHITELIST=${CODESPACE_NAME}-8080.app.github.dev
       - GEOSERVER_CSRF_DISABLE=true
       - PROXY_BASE_URL=https://${CODESPACE_NAME}-8080.app.github.dev/geoserver
+      - SKIP_DEMO_DATA=true
     deploy:
       resources:
         limits:
