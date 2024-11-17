@@ -1,0 +1,72 @@
+name: Check for required files
+
+on:
+  push:
+    branches: [ assignment ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check Screenshot
+        id: check_1_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "landuse.sld"
+
+      - name: Required files exist
+        if: steps.check_1_files.outputs.files_exists != 'true'
+        run: |
+          echo Required file, 'landuse.sld', is missing
+          exit 1
+
+      - name: Check Screenshot
+        id: check_2_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "roads.sld"
+
+      - name: Required files exist
+        if: steps.check_2_files.outputs.files_exists != 'true'
+        run: |
+          echo Required file, 'roads.sld', is missing
+          exit 1
+
+      - name: Check Screenshot
+        id: check_3_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "pois.sld`"
+
+      - name: Required files exist
+        if: steps.check_3_files.outputs.files_exists != 'true'
+        run: |
+          echo Required file, 'pois.sld`', is missing
+          exit 1
+
+      - name: Check Screenshot
+        id: check_4_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "geoserver_layer_group_preview.png"
+
+      - name: Required files exist
+        if: steps.check_4_files.outputs.files_exists != 'true'
+        run: |
+          echo Required file, 'geoserver_layer_group_preview.png', is missing
+          exit 1
+
+      - name: Check Screenshot
+        id: check_5_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "qgis_layer_group_preview.png"
+
+      - name: Required files exist
+        if: steps.check_5_files.outputs.files_exists != 'true'
+        run: |
+          echo Required file, 'qgis_layer_group_preview.png', is missing
+          exit 1
+          

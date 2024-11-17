@@ -1,0 +1,49 @@
+version: "3.8"
+services:
+
+  postgis:
+    image: "mdillon/postgis"
+    hostname: postgis
+    ports:
+      - "5432:5432"
+    volumes:
+      - type: volume
+        source: postgresql_data_volume
+        target: /var/lib/postgresql/data
+      
+  geoserver:
+    image: docker.osgeo.org/geoserver:2.24.x
+    ports:
+      - "8080:8080"
+    volumes:
+      - type: volume
+        source: geoserver_data_volume 
+        target: /opt/geoserver_data
+    environment:
+      - ROOT_WEBAPP_REDIRECT=true
+      - CORS_ENABLED=true
+      - CORS_ALLOWED_ORIGINS="${CODESPACE_NAME}-8080.app.github.dev,github.dev,localhost,0.0.0.0,127.0.0.1"
+      - CORS_ALLOWED_METHODS="GET,POST,PUT,DELETE,HEAD,OPTIONS"
+      - CORS_ALLOWED_HEADERS="*"
+      - geoserver.xframe.shouldSetPolicy=false
+      - geoserver.xContentType.shouldSetPolicy=false
+      - GEOSERVER_CSRF_WHITELIST=${CODESPACE_NAME}-8080.app.github.dev
+      - GEOSERVER_CSRF_DISABLE=true
+      - PROXY_BASE_URL=https://${CODESPACE_NAME}-8080.app.github.dev/geoserver
+      - SKIP_DEMO_DATA=true
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 8G
+        reservations:
+          cpus: '1'
+          memory: 1G
+
+volumes:
+  postgresql_data_volume:
+  geoserver_data_volume:
+  
+networks:
+  default:
+    name: gist604b

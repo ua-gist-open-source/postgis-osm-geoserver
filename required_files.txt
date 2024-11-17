@@ -1,0 +1,5 @@
+landuse.sld
+roads.sld
+pois.sld
+geoserver_layer_group_preview.png
+qgis_layer_group_preview.png
