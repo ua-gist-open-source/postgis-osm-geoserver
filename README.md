@@ -39,7 +39,7 @@ _If the database does not exist or the row count is 0, run the populate script m
 
 ### Check the OSM database
 You can check on the data via the PostGIS Extension (Elephant icon). The settings are the same as before:
-- host: `localhost`
+- host: `postgis`
 - username: `postgres`
 - password: `postgres`
 - port: `5432`
